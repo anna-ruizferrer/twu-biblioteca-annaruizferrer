@@ -19,18 +19,24 @@ public class RouteTest {
         //Set up view mock classes to verify display methods are called
         r.welcomeView = mock(WelcomeView.class);
         r.booksView = mock(BooksView.class);
+        r.optionsView = mock(OptionsView.class);
     }
 
     @Test
     public void testRun() {
 
         // Pre-define user input to interact with the App
-        InputStream in = new ByteArrayInputStream("\n".getBytes()); // Input 'Enter' to go from WelcomeView to BooksView
+        String orders;
+        orders = "\n";      // 'Enter' to go from WelcomeView to OptionsView
+        orders += "1\n";    // '1' to go from OptionsView to BooksView
+
+        InputStream in = new ByteArrayInputStream(orders.getBytes());
         r.userInput = new Scanner(in);
 
         r.run();
 
         verify(r.welcomeView).display();
+        verify(r.optionsView).display();
         verify(r.booksView).display();
     }
 }

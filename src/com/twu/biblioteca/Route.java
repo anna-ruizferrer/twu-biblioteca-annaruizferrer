@@ -5,12 +5,14 @@ import java.util.Scanner;
 public class Route {
 
     public WelcomeView welcomeView;
+    public OptionsView optionsView;
     public BooksView booksView;
 
     public Scanner userInput = new Scanner(System.in);
 
     {
         welcomeView = new WelcomeView();
+        optionsView = new OptionsView();
         booksView = new BooksView();
     }
 
@@ -24,8 +26,17 @@ public class Route {
 
         // Change view when 'Enter'
         userInput.nextLine();
-        booksView.display();
+
+        optionsView.display();
+        optionSwitch(Integer.valueOf(userInput.nextLine()));
     }
 
+    private void optionSwitch(int in) {
+        switch(in){
+            case 1:
+                booksView.display();
+                break;
+        }
+    }
 
 }
