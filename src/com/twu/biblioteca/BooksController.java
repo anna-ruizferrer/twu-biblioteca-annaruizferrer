@@ -16,12 +16,12 @@ public class BooksController {
         loadCatalog();
     }
 
-    public List<String> getTitlesList(){
-        List<String> titles = new ArrayList<String>();
-        for(Book book: catalog) {
-            titles.add(book.getTitle());
+    public List<Book> getBooksList(){
+        List<Book> books = new ArrayList<Book>();
+        for(Book b: catalog) {
+            books.add(b);
         }
-        return titles;
+        return books;
     }
 
     private void loadCatalog(){
@@ -32,7 +32,8 @@ public class BooksController {
 
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                catalog.add(new Book(line));
+                String[] b = line.split("\t");
+                catalog.add(new Book(b[0], b[1], b[2]));
             }
             fileReader.close();
 

@@ -9,8 +9,13 @@ public class BookTest {
     @Test
     public void testBook() {
         String title = "Title";
-        Book b = new Book(title);
+        String author = "Author";
+        String year = "2017";
+
+        Book b = new Book(title, author, year);
         assertEquals(title, b.getTitle());
+        assertEquals(author, b.getAuthor());
+        assertEquals(year, b.getYear());
     }
 
 }

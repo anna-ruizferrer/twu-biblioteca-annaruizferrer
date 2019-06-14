@@ -9,8 +9,8 @@ public class BooksView {
     }
 
     public void display(){
-        for (String title : booksC.getTitlesList()) {
-            System.out.println(title);
+        for (Book book : booksC.getBooksList()) {
+            System.out.format("%16s%16s%16s\n", book.getTitle(), book.getAuthor(), book.getYear());
         }
     }
 }

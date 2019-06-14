@@ -1,6 +1,6 @@
-Book1
-Book2
-Book3
-Book4
-Book5
-Book6
+Book1	Author1	1993
+Book2	Author2	1989
+Book3	Author3	2011
+Book4	Author4	2001
+Book5	Author5	2017
+Book6	Author6	2003
