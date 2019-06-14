@@ -3,7 +3,9 @@ package com.twu.biblioteca;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        new Route().run();
+        Route route = new Route();
+        route.setUp();
+        route.run();
     }
 
 }

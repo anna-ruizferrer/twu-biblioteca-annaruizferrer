@@ -14,6 +14,10 @@ public class Route {
         booksView = new BooksView();
     }
 
+    public void setUp(){
+        booksView.booksController.loadCatalog();
+    }
+
 
     public void run() {
         welcomeView.display();

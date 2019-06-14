@@ -12,19 +12,11 @@ public class BooksController {
 
     public List<Book> catalog = new ArrayList<Book>();
 
-    public BooksController(){
-        loadCatalog();
-    }
-
     public List<Book> getBooksList(){
-        List<Book> books = new ArrayList<Book>();
-        for(Book b: catalog) {
-            books.add(b);
-        }
-        return books;
+        return catalog;
     }
 
-    private void loadCatalog(){
+    public void loadCatalog(){
         try {
             File file = new File("doc/books_database.txt");
             FileReader fileReader = new FileReader(file);
