@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-public class BooksView {
+public class BooksView extends View {
 
     public BooksController booksController;
 
@@ -13,4 +13,6 @@ public class BooksView {
             System.out.format("%16s%16s%16s\n", book.getTitle(), book.getAuthor(), book.getYear());
         }
     }
+
+    public String goTo(String in) { return "booksView"; }
 }
