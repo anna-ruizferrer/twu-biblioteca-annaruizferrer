@@ -1,26 +1,16 @@
 package com.twu.biblioteca;
 
-import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Route {
 
-    public WelcomeView welcomeView = new WelcomeView();
-    public OptionsView optionsView = new OptionsView();
-    public BooksView booksView = new BooksView();
-    public ErrorView errorView = new ErrorView();
-
-    HashMap<String, View> viewsMap = new HashMap<String, View>();
+    public WelcomeView welcomeView = new WelcomeView(this);
+    public OptionsView optionsView = new OptionsView(this);
+    public BooksView booksView = new BooksView(this);
+    public ErrorView errorView = new ErrorView(this);
 
     public Scanner userInput = new Scanner(System.in);
-
-    public Route() {
-        viewsMap.put("welcomeView", welcomeView);
-        viewsMap.put("optionsView", optionsView);
-        viewsMap.put("booksView", booksView);
-        viewsMap.put("errorView", errorView);
-    }
 
     public void setUp(){
         booksView.booksController.loadCatalog();
@@ -37,8 +27,7 @@ public class Route {
                     System.out.println("Goodbye! :)");
                     break;
                 }
-
-                currentView = viewsMap.get(currentView.goTo(in));
+                currentView = currentView.next(in);
             }
             catch (NoSuchElementException e){ break; }
         }

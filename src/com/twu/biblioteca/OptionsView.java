@@ -2,7 +2,9 @@ package com.twu.biblioteca;
 
 public class OptionsView extends View {
     public OptionsController optionsController;
-    {
+
+    public OptionsView(Route r){
+        super(r);
         optionsController = new OptionsController();
     }
 
@@ -12,7 +14,7 @@ public class OptionsView extends View {
         }
     }
 
-    public String goTo(String in){
+    public View next(String in){
         int i;
         try
         {
@@ -25,9 +27,9 @@ public class OptionsView extends View {
 
         switch(i){
             case 1:
-                return "booksView";
+                return route.booksView;
             default:
-                return "errorView";
+                return route.errorView;
         }
     }
 }

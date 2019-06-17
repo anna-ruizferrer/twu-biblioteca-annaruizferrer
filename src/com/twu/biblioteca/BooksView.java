@@ -4,7 +4,8 @@ public class BooksView extends View {
 
     public BooksController booksController;
 
-    public BooksView(){
+    public BooksView(Route r){
+        super(r);
         booksController = new BooksController();
     }
 
@@ -15,14 +16,14 @@ public class BooksView extends View {
         System.out.println("Press 'c' and the book id to check it out. E.g: c1");
     }
 
-    public String goTo(String in) {
+    public View next(String in) {
         switch (in.charAt(0)){
             case 'c':
                 System.out.println(Integer.valueOf(in.substring(1)));
                 booksController.checkoutBook(Integer.valueOf(in.substring(1)));
-                return "booksView";
+                return route.booksView;
             default:
-                return "booksView";
+                return route.booksView;
 
         }
     }
