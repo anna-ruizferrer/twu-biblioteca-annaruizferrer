@@ -33,12 +33,15 @@ public class Route {
             currentView.display();
             try{
                 String in = userInput.nextLine();
+                if (in.equals("q")){
+                    System.out.println("Goodbye! :)");
+                    break;
+                }
+
                 currentView = viewsMap.get(currentView.goTo(in));
             }
             catch (NoSuchElementException e){ break; }
         }
     }
-
-
 
 }
