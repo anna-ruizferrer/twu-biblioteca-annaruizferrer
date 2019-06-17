@@ -12,8 +12,29 @@ public class BooksController {
 
     public List<Book> catalog = new ArrayList<Book>();
 
-    public List<Book> getBooksList(){
-        return catalog;
+    public List<Book> getAvailableBooksList(){
+        List<Book> availableBooks = new ArrayList<Book>();
+
+        for (Book b: catalog) {
+            if (b.isAvailable()) {
+                availableBooks.add(b);
+            }
+        }
+        return availableBooks;
+    }
+
+    public Book getById(int id){
+
+        for (Book b: catalog) {
+            if (b.getId() == id) {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public void checkoutBook(int i){
+        getById(i).checkout();
     }
 
     public void loadCatalog(){
@@ -23,9 +44,10 @@ public class BooksController {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String line;
+            int id = 1;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] b = line.split("\t");
-                catalog.add(new Book(b[0], b[1], b[2]));
+                catalog.add(new Book(id++, b[0], b[1], b[2]));
             }
             fileReader.close();
 
