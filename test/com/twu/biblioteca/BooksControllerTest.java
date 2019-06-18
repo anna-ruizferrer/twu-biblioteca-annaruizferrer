@@ -34,12 +34,6 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void testGetById(){
-        assertEquals("Title1", bc.getById(1).getTitle());
-        assertEquals("Author3", bc.getById(3).getAuthor());
-    }
-
-    @Test
     public void testCheckoutBook(){
         assertEquals(3, bc.getAvailableBooksList().size());
         assertTrue(bc.checkoutBook(2));
@@ -50,6 +44,12 @@ public class BooksControllerTest {
         }
 
         assertFalse(bc.checkoutBook(11));
+        assertFalse(bc.checkoutBook(2));
+
+        assertEquals("Title1", bc.getAvailableBookById(1).getTitle());
+        assertEquals("Author3", bc.getAvailableBookById(3).getAuthor());
+        assertNull(bc.getAvailableBookById(2));
+
     }
 
 

@@ -20,6 +20,8 @@ public class BooksView extends View {
         if (in.matches("c\\d+")) {
             if (booksController.checkoutBook(Integer.valueOf(in.substring(1)))) {
                 new MessageView(route, "Thank you! Enjoy the book").display();
+            } else {
+                new MessageView(route, "Sorry, that book is not available").display();
             }
         }
         return this;

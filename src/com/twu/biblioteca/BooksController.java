@@ -23,10 +23,10 @@ public class BooksController {
         return availableBooks;
     }
 
-    public Book getById(int id){
+    public Book getAvailableBookById(int id){
 
         for (Book b: catalog) {
-            if (b.getId() == id) {
+            if (b.getId() == id && b.isAvailable()) {
                 return b;
             }
         }
@@ -34,7 +34,7 @@ public class BooksController {
     }
 
     public Boolean checkoutBook(int i){
-        Book b = getById(i);
+        Book b = getAvailableBookById(i);
         if (b != null) {
             b.checkout();
             return true;
