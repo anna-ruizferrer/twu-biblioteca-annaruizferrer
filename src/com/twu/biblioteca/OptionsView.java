@@ -28,6 +28,8 @@ public class OptionsView extends View {
         switch(i){
             case 1:
                 return route.booksView;
+            case 2:
+                return route.moviesView;
             default:
                 new MessageView(route, "Please select a valid option!").display();
                 return this;

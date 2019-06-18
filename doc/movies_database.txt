@@ -1,0 +1,7 @@
+movie1	1993	director1	9.1
+movie2	2003	director2	5.0
+movie3	2013	director3	7.8
+movie4	2010	director4	9.7
+movie5	1983	director5	6.2
+movie6	2007	director6	4.8
+movie7	1997	director7	8.3

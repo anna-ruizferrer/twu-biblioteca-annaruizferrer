@@ -7,12 +7,15 @@ public class Route {
 
     public OptionsView optionsView = new OptionsView(this);
     public BooksView booksView = new BooksView(this);
+    public MoviesView moviesView = new MoviesView(this);
 
     public Scanner userInput = new Scanner(System.in);
 
     public void setUp(){
         booksView.booksController.loadCatalog();
+        moviesView.moviesController.loadCatalog();
     }
+
 
     public void run() {
 
@@ -23,6 +26,7 @@ public class Route {
             currentView.display();
             try{
                 String in = userInput.nextLine();
+
                 if (in.equals("q")){
                     new MessageView(this, "Goodbye! :)").display();
                     break;
