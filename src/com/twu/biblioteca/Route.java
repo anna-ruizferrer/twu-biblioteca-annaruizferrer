@@ -5,10 +5,8 @@ import java.util.Scanner;
 
 public class Route {
 
-    public WelcomeView welcomeView = new WelcomeView(this);
     public OptionsView optionsView = new OptionsView(this);
     public BooksView booksView = new BooksView(this);
-    public ErrorView errorView = new ErrorView(this);
 
     public Scanner userInput = new Scanner(System.in);
 
@@ -17,14 +15,16 @@ public class Route {
     }
 
     public void run() {
-        View currentView = welcomeView;
+
+        new MessageView(this, "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!").display();
+        View currentView = optionsView;
 
         while (true){
             currentView.display();
             try{
                 String in = userInput.nextLine();
                 if (in.equals("q")){
-                    System.out.println("Goodbye! :)");
+                    new MessageView(this, "Goodbye! :)").display();
                     break;
                 }
                 currentView = currentView.next(in);

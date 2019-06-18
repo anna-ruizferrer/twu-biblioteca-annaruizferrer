@@ -33,8 +33,13 @@ public class BooksController {
         return null;
     }
 
-    public void checkoutBook(int i){
-        getById(i).checkout();
+    public Boolean checkoutBook(int i){
+        Book b = getById(i);
+        if (b != null) {
+            b.checkout();
+            return true;
+        }
+        return false;
     }
 
     public void loadCatalog(){

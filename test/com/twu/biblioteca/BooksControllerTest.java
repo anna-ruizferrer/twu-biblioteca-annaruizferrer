@@ -42,12 +42,14 @@ public class BooksControllerTest {
     @Test
     public void testCheckoutBook(){
         assertEquals(3, bc.getAvailableBooksList().size());
-        bc.checkoutBook(2);
+        assertTrue(bc.checkoutBook(2));
         assertEquals(2, bc.getAvailableBooksList().size());
 
         for (Book b: bc.getAvailableBooksList()){
             assertNotEquals(2, b.getId());
         }
+
+        assertFalse(bc.checkoutBook(11));
     }
 
 

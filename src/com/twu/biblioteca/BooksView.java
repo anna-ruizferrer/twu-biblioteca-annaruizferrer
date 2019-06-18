@@ -17,14 +17,11 @@ public class BooksView extends View {
     }
 
     public View next(String in) {
-        switch (in.charAt(0)){
-            case 'c':
-                System.out.println(Integer.valueOf(in.substring(1)));
-                booksController.checkoutBook(Integer.valueOf(in.substring(1)));
-                return route.booksView;
-            default:
-                return route.booksView;
-
+        if (in.matches("c\\d+")) {
+            if (booksController.checkoutBook(Integer.valueOf(in.substring(1)))) {
+                new MessageView(route, "Thank you! Enjoy the book").display();
+            }
         }
+        return this;
     }
 }

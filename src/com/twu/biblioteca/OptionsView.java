@@ -29,7 +29,8 @@ public class OptionsView extends View {
             case 1:
                 return route.booksView;
             default:
-                return route.errorView;
+                new MessageView(route, "Please select a valid option!").display();
+                return this;
         }
     }
 }
