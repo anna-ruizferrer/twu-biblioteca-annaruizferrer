@@ -22,6 +22,9 @@ public class BookTest {
         b.checkout();
         assertFalse(b.isAvailable());
 
+        b.returnit();
+        assertTrue(b.isAvailable());
+
     }
 
 }

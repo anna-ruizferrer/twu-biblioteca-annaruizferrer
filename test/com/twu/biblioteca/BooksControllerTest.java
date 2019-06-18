@@ -34,7 +34,8 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void testCheckoutBook(){
+    public void testCheckoutAndReturnBook(){
+        // Test Checkout
         assertEquals(3, bc.getAvailableBooksList().size());
         assertTrue(bc.checkoutBook(2));
         assertEquals(2, bc.getAvailableBooksList().size());
@@ -43,6 +44,7 @@ public class BooksControllerTest {
             assertNotEquals(2, b.getId());
         }
 
+        // Test checkout not available books
         assertFalse(bc.checkoutBook(11));
         assertFalse(bc.checkoutBook(2));
 
@@ -50,6 +52,10 @@ public class BooksControllerTest {
         assertEquals("Author3", bc.getAvailableBookById(3).getAuthor());
         assertNull(bc.getAvailableBookById(2));
 
+        // Test Return
+        assertFalse(bc.returnBook(3));
+        assertTrue(bc.returnBook(2));
+        assertEquals(3, bc.getAvailableBooksList().size());
     }
 
 

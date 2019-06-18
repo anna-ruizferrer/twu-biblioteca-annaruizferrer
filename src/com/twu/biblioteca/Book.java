@@ -32,4 +32,8 @@ public class Book {
     public Boolean isAvailable() { return available; }
 
     public void checkout() { if (available) { available = false; } }
+
+    public void returnit() { if (!available) { available = true; }
+
+    }
 }

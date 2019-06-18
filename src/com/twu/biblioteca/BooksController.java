@@ -33,10 +33,29 @@ public class BooksController {
         return null;
     }
 
+    public Book getNotAvailableBookById(int id){
+
+        for (Book b: catalog) {
+            if (b.getId() == id && !b.isAvailable()) {
+                return b;
+            }
+        }
+        return null;
+    }
+
     public Boolean checkoutBook(int i){
         Book b = getAvailableBookById(i);
         if (b != null) {
             b.checkout();
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean returnBook(int i){
+        Book b = getNotAvailableBookById(i);
+        if (b != null) {
+            b.returnit();
             return true;
         }
         return false;
