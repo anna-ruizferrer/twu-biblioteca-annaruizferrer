@@ -26,4 +26,14 @@ public class MovieTest {
         assertTrue(m.isAvailable());
     }
 
+    @Test
+    public void shouldNotBeAvailableAfterCheckoutAndAvailableAfterReturn(){
+        Movie m = new Movie(0, "movie1", "1992", "director 1", "1.0");
+        assertTrue(m.isAvailable());
+        m.checkout();
+        assertFalse(m.isAvailable());
+        m.returnit();
+        assertTrue(m.isAvailable());
+    }
+
 }

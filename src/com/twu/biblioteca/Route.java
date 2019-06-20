@@ -5,9 +5,12 @@ import java.util.Scanner;
 
 public class Route {
 
+    private Printer printer = new Printer();
+
     public OptionsView optionsView = new OptionsView(this);
     public BooksView booksView = new BooksView(this);
     public MoviesView moviesView = new MoviesView(this);
+    //public MessageView messageView = new MessageView(this);
 
     public Scanner userInput = new Scanner(System.in);
 
@@ -19,7 +22,8 @@ public class Route {
 
     public void run() {
 
-        new MessageView(this, "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!").display();
+        printer.print("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+
         View currentView = optionsView;
 
         while (true){
@@ -28,13 +32,21 @@ public class Route {
                 String in = userInput.nextLine();
 
                 if (in.equals("q")){
-                    new MessageView(this, "Goodbye! :)").display();
+                    printer.print("Goodbye! :)");
                     break;
                 }
-                currentView = currentView.next(in);
+                currentView = currentView.execute(in);
             }
             catch (NoSuchElementException e){ break; }
         }
+    }
+
+    public void setPrinter(Printer p){
+        printer = p;
+    }
+
+    public Printer getPrinter(){
+        return printer;
     }
 
 }

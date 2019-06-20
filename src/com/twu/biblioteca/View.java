@@ -11,7 +11,7 @@ public class View {
 
     }
 
-    public View next(String in){
+    public View execute(String in){
         return this;
     }
 }

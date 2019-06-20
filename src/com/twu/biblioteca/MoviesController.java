@@ -24,6 +24,33 @@ public class MoviesController {
         return availables;
     }
 
+    public Movie getAvailableMovieById(int id) {
+        for (Movie m: movies) {
+            if (m.getId() == id && m.isAvailable()) {
+                return m;
+            }
+        }
+        return null;
+    }
+
+    public Movie getNotAvailableMovieById(int id) {
+        for (Movie m: movies) {
+            if (m.getId() == id && !m.isAvailable()) {
+                return m;
+            }
+        }
+        return null;
+    }
+
+    public boolean checkoutMovie(int i) {
+        Movie m = getAvailableMovieById(i);
+        if (m != null) {
+            m.checkout();
+            return true;
+        }
+        return false;
+    }
+
     public void loadCatalog() {
         try {
             File file = new File("doc/movies_database.txt");
@@ -42,4 +69,15 @@ public class MoviesController {
             e.printStackTrace();
         }
     }
+
+    public Boolean returnMovie(int i) {
+        Movie m = getNotAvailableMovieById(i);
+        if (m != null) {
+            m.returnit();
+            return true;
+        }
+        return false;
+    }
+
+
 }

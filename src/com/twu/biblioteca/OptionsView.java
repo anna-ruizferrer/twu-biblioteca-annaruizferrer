@@ -9,12 +9,14 @@ public class OptionsView extends View {
     }
 
     public void display(){
+        String str = "";
         for (Option opt : optionsController.getOptionsList()) {
-            System.out.format("%6d%20s\n", opt.getId(), opt.getName());
+            str += String.format("%6d%20s\n", opt.getId(), opt.getName());
         }
+        route.getPrinter().print(str);
     }
 
-    public View next(String in){
+    public View execute(String in){
         int i;
         try
         {
@@ -31,7 +33,7 @@ public class OptionsView extends View {
             case 2:
                 return route.moviesView;
             default:
-                new MessageView(route, "Please select a valid option!").display();
+                route.getPrinter().print("Please select a valid option!");
                 return this;
         }
     }

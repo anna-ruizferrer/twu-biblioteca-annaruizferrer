@@ -41,4 +41,12 @@ public class Movie {
     public boolean isAvailable() {
         return available;
     }
+
+    public void checkout() {
+        if (isAvailable()) { available = false; }
+    }
+
+    public void returnit() {
+        if (!available) { available = true; }
+    }
 }
